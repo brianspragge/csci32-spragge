@@ -47,3 +47,14 @@ export function getVariantInputTextStyles(variant: Variant) {
       return 'text-olive-leaf-300'
   }
 }
+
+export function getVariantButtonTextStyles(variant: Variant) {
+  switch (variant) {
+    case Variant.PRIMARY:
+      return 'text-deep-crimson-100'
+    case Variant.SECONDARY:
+      return 'text-baltic-blue-100'
+    case Variant.TERTIARY:
+      return 'text-olive-leaf-100'
+  }
+}
