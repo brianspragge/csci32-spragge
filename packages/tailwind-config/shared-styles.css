@@ -5,4 +5,64 @@
   --color-blue-1000: #2a8af6;
   --color-purple-1000: #a853ba;
   --color-red-1000: #e92a67;
+
+  --color-eggshell-50: #f7f5ee;
+  --color-eggshell-100: #eeeadd;
+  --color-eggshell-200: #ddd5bb;
+  --color-eggshell-300: #cdc098;
+  --color-eggshell-400: #bcab76;
+  --color-eggshell-500: #ab9754;
+  --color-eggshell-600: #897843;
+  --color-eggshell-700: #675a32;
+  --color-eggshell-800: #443c22;
+  --color-eggshell-900: #221e11;
+  --color-eggshell-950: #18150c;
+
+  --color-sand-dune-50: #f7f4ed;
+  --color-sand-dune-100: #f0eadb;
+  --color-sand-dune-200: #e0d4b8;
+  --color-sand-dune-300: #d1bf94;
+  --color-sand-dune-400: #c2a970;
+  --color-sand-dune-500: #b3944d;
+  --color-sand-dune-600: #8f763d;
+  --color-sand-dune-700: #6b592e;
+  --color-sand-dune-800: #473b1f;
+  --color-sand-dune-900: #241e0f;
+  --color-sand-dune-950: #19150b;
+
+  --color-deep-crimson-50: #faeaeb;
+  --color-deep-crimson-100: #f5d6d6;
+  --color-deep-crimson-200: #ebadae;
+  --color-deep-crimson-300: #e18485;
+  --color-deep-crimson-400: #d75b5d;
+  --color-deep-crimson-500: #cd3234;
+  --color-deep-crimson-600: #a4282a;
+  --color-deep-crimson-700: #7b1e1f;
+  --color-deep-crimson-800: #521415;
+  --color-deep-crimson-900: #290a0a;
+  --color-deep-crimson-950: #1d0707;
+
+  --color-olive-leaf-50: #f6f8ec;
+  --color-olive-leaf-100: #edf2d9;
+  --color-olive-leaf-200: #dbe5b3;
+  --color-olive-leaf-300: #c9d88d;
+  --color-olive-leaf-400: #b7cb67;
+  --color-olive-leaf-500: #a5be41;
+  --color-olive-leaf-600: #849834;
+  --color-olive-leaf-700: #637227;
+  --color-olive-leaf-800: #424c1a;
+  --color-olive-leaf-900: #21260d;
+  --color-olive-leaf-950: #171b09;
+
+  --color-baltic-blue-50: #eef3f7;
+  --color-baltic-blue-100: #dce7ef;
+  --color-baltic-blue-200: #b9cfdf;
+  --color-baltic-blue-300: #96b6cf;
+  --color-baltic-blue-400: #739ebf;
+  --color-baltic-blue-500: #5086af;
+  --color-baltic-blue-600: #406b8c;
+  --color-baltic-blue-700: #305069;
+  --color-baltic-blue-800: #203646;
+  --color-baltic-blue-900: #101b23;
+  --color-baltic-blue-950: #0b1318;
 }
