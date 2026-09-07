@@ -11,12 +11,14 @@
   ],
   "exports": {
     "./styles.css": "./dist/index.css",
-    "./button": "./dist/button.js",
-    "./card": "./dist/card.js",
-    "./size": "./dist/size.js",
-    "./variant": "./dist/variant.js",
-    "./code": "./dist/code.js",
-    "./*": "./dist/*.js"
+    "./button": "./src/button.tsx",
+    "./card": "./src/card.tsx",
+    "./cat": "./src/cat.tsx",
+    "./input": "./src/input.tsx",
+    "./size": "./src/size.ts",
+    "./variant": "./src/variant.ts",
+    "./code": "./src/code.tsx",
+    "./*": "./src/*.ts"
   },
   "scripts": {
     "build:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
