@@ -11,6 +11,7 @@
   "dependencies": {
     "next": "15.5.24",
     "@repo/ui": "*",
+    "@repo/math": "*",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
