@@ -36,7 +36,6 @@ export function getVariantOutlineStyles(variant: Variant) {
   }
 }
 
-// (Brian): I do not know what these are for
 export function getVariantInputTextStyles(variant: Variant) {
   switch (variant) {
     case Variant.PRIMARY:

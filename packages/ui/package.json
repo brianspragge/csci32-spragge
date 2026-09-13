@@ -14,11 +14,12 @@
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",
     "./cat": "./src/cat.tsx",
+    "./code": "./src/code.tsx",
+    "./header": "./src/header.tsx",
     "./input": "./src/input.tsx",
     "./page": "./src/page.tsx",
     "./size": "./src/size.ts",
     "./variant": "./src/variant.ts",
-    "./code": "./src/code.tsx",
     "./*": "./src/*.ts"
   },
   "scripts": {

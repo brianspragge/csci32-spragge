@@ -4,8 +4,10 @@ import { Button } from '@repo/ui/button'
 import { Size } from '@repo/ui/size'
 import { Variant } from '@repo/ui/variant'
 import { Input } from '@repo/ui/input'
+import { Header } from '@repo/ui/header'
 import { useState } from 'react'
 import { Page } from '@repo/ui/page'
+import { navLinks } from '../nav-links'
 
 export default function InputPage() {
   const [userName, setUserName] = useState('')
@@ -13,34 +15,43 @@ export default function InputPage() {
   const [thirdInput, setThirdInput] = useState('')
 
   return (
-    <Page>
-      <div className="flex flex-wrap gap-2">
-        <div className="flex gap-2">
-          <Input id={'userName'} name={'userName'} variant={Variant.PRIMARY} value={userName} setValue={setUserName} />
-          <Button size={Size.LARGE} variant={Variant.PRIMARY} onClick={() => alert(`Hello there, ${userName}!`)}>
-            Enter Name
-          </Button>
+    <>
+      <Header links={navLinks} />
+      <Page>
+        <div className="flex flex-wrap gap-2">
+          <div className="flex gap-2">
+            <Input
+              id={'userName'}
+              name={'userName'}
+              variant={Variant.PRIMARY}
+              value={userName}
+              setValue={setUserName}
+            />
+            <Button size={Size.LARGE} variant={Variant.PRIMARY} onClick={() => alert(`Hello there, ${userName}!`)}>
+              Enter Name
+            </Button>
+          </div>
+          <div className="flex gap-2">
+            <Input
+              id={'second'}
+              name={'second'}
+              variant={Variant.SECONDARY}
+              value={secondInput}
+              setValue={setSecondInput}
+            />
+            <Button size={Size.MEDIUM} variant={Variant.SECONDARY} onClick={() => alert(secondInput)}>
+              Hi there
+            </Button>
+          </div>
+          <div className="flex gap-2">
+            <Input id={'third'} name={'third'} variant={Variant.TERTIARY} value={thirdInput} setValue={setThirdInput} />
+            <Button size={Size.SMALL} variant={Variant.TERTIARY} onClick={() => alert(thirdInput)}>
+              Hi there
+            </Button>
+          </div>
         </div>
-        <div className="flex gap-2">
-          <Input
-            id={'second'}
-            name={'second'}
-            variant={Variant.SECONDARY}
-            value={secondInput}
-            setValue={setSecondInput}
-          />
-          <Button size={Size.MEDIUM} variant={Variant.SECONDARY} onClick={() => alert(secondInput)}>
-            Hi there
-          </Button>
-        </div>
-        <div className="flex gap-2">
-          <Input id={'third'} name={'third'} variant={Variant.TERTIARY} value={thirdInput} setValue={setThirdInput} />
-          <Button size={Size.SMALL} variant={Variant.TERTIARY} onClick={() => alert(thirdInput)}>
-            Hi there
-          </Button>
-        </div>
-      </div>
-    </Page>
+      </Page>
+    </>
   )
 }
 

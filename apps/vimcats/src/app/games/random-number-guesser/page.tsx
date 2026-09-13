@@ -4,7 +4,9 @@ import { useState } from 'react'
 import RandomNumberGuessingGameMenu from './random-number-guessing-game-menu'
 import RandomNumberGame from './random-number-guessing-game'
 import { getRandomInt } from '@repo/math/getRandomInt'
+import { Header } from '@repo/ui/header'
 import { Page } from '@repo/ui/page'
+import { navLinks } from '../../nav-links'
 
 export interface RandomNumberGuessingGameProps {
   lowRange: number
@@ -39,12 +41,15 @@ export default function RandomNumberGuesser() {
   }
 
   return (
-    <Page>
-      {running ? (
-        <RandomNumberGame endGame={endGame} randomNumber={randomNumber} maxGuessCount={maxGuessCount} />
-      ) : (
-        <RandomNumberGuessingGameMenu startGame={startGame} />
-      )}
-    </Page>
+    <>
+      <Header links={navLinks} />
+      <Page>
+        {running ? (
+          <RandomNumberGame endGame={endGame} randomNumber={randomNumber} maxGuessCount={maxGuessCount} />
+        ) : (
+          <RandomNumberGuessingGameMenu startGame={startGame} />
+        )}
+      </Page>
+    </>
   )
 }

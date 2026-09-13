@@ -46,8 +46,8 @@ Interactive components begin with `'use client'` (e.g. `input/page.tsx`, the gam
 
 ### `@repo/ui` exports
 
-Subpath exports map directly to `src/` files: `button`, `card`, `cat`, `code`, `input`,
-`page`, `size`, `variant`, plus `styles.css` (built to `dist/index.css`).
+Subpath exports map directly to `src/` files: `button`, `card`, `cat`, `code`, `header`,
+`input`, `page`, `size`, `variant`, plus `styles.css` (built to `dist/index.css`).
 
 - Every `@repo/ui` component is a **named** export.
 - `Page` (`@repo/ui/page`) is the shared page shell: a full-height centered column with a
