@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@repo/ui/button'
-import Input from '@repo/ui/input'
+import { Input } from '@repo/ui/input'
 import { useState } from 'react'
 import { RandomNumberGuessingGameEngineProps } from './page'
 

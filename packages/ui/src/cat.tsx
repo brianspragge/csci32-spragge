@@ -1,5 +1,3 @@
-import { type JSX } from 'react'
-
 interface CatProps {
   name: string
   breed: string

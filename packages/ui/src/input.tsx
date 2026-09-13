@@ -1,27 +1,21 @@
 import { getInputSizeStyles, Size } from './size'
 import { HTMLInputTypeAttribute } from 'react'
-import {
-  getVariantBackgroundStyles,
-  getVariantBorderStyles,
-  getVariantInputTextStyles,
-  getVariantOutlineStyles,
-  Variant,
-} from './variant'
+import { getVariantBorderStyles, getVariantInputTextStyles, getVariantOutlineStyles, Variant } from './variant'
 import { getCommonStyles } from './tokens'
 
 interface InputProps {
   className?: string
-  defaultValue?: any
+  defaultValue?: string | number
   id: string
   name: string
   placeholder?: string
   setValue?: (newValue: string) => void
   size?: Size
   type?: HTMLInputTypeAttribute
-  value?: any
+  value?: string | number
   variant?: Variant
 }
-export default function Input({
+export function Input({
   className = 'bg-sand-dune-50',
   defaultValue,
   id,

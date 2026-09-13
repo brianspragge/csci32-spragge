@@ -2,12 +2,6 @@
   "name": "vimcats",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
   "dependencies": {
     "next": "15.5.24",
     "@repo/ui": "*",
