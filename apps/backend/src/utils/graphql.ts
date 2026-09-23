@@ -8,7 +8,7 @@ import type { UserService } from '@/services/UserService'
 import mercurius from 'mercurius'
 import mercuriusLogging from 'mercurius-logging'
 
-const GRAPHL_API_PATH = '/api/graphql'
+const GRAPHQL_API_PATH = '/api/graphql'
 const GRAPHQL_DEPTH_LIMIT = 7
 const resolvers = [UserResolver] as NonEmptyArray<Function>
 
@@ -28,7 +28,7 @@ export async function registerGraphQL(fastify: FastifyInstance) {
   await fastify.register(mercurius, {
     schema,
     cache: false,
-    path: GRAPHL_API_PATH,
+    path: GRAPHQL_API_PATH,
     graphiql,
     queryDepth: GRAPHQL_DEPTH_LIMIT,
     context: (request: FastifyRequest, reply: FastifyReply): Context => ({
