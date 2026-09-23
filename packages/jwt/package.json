@@ -1,0 +1,15 @@
+{
+  "name": "jwt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "sign": "node sign.js",
+    "verify": "node verify.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.3",
+    "jsonwebtoken": "^9.0.3"
+  }
+}
