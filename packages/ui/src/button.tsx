@@ -11,6 +11,7 @@ interface ButtonProps {
   href?: string
   onClick?: () => void
   size?: Size
+  type?: 'button' | 'submit' | 'reset'
   variant?: Variant
 }
 
@@ -20,6 +21,7 @@ export const Button = ({
   href,
   onClick,
   size = Size.MEDIUM,
+  type = 'button',
   variant = Variant.SECONDARY,
 }: ButtonProps) => {
   const sizeCssClasses = getInputSizeStyles(size)
@@ -34,7 +36,7 @@ export const Button = ({
       {children}
     </a>
   ) : (
-    <button className={completedCssClasses} onClick={onClick}>
+    <button className={completedCssClasses} onClick={onClick} type={type}>
       {children}
     </button>
   )
