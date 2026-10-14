@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../hooks/useAuth'
 import { Button } from '@repo/ui/button'
-// @ts-expect-error - Input component export in package.json
 import { Input } from '@repo/ui/input'
 import { Size } from '@repo/ui/size'
 import { Variant } from '@repo/ui/variant'

@@ -1,11 +1,28 @@
+'use client'
+
 import Image from 'next/image'
+import { useAuth } from '@/hooks/useAuth'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 import { Header } from '@repo/ui/header'
 import { Page } from '@repo/ui/page'
 import { navLinks } from './nav-links'
 
 export default function Home() {
+  const { user } = useAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard')
+    } else {
+      router.push('/welcome')
+    }
+  }, [user, router])
+
   return (
     <>
+      <div>Loading...</div>
       <Header links={navLinks} />
       <Page>
         <Image className="h-20 w-auto" src="/Vimlogo.svg.webp" alt="Vim logo" width={80} height={80} priority />
