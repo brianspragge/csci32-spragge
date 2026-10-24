@@ -42,6 +42,3 @@ next-env.d.ts
 
 # GraphQL generated schema
 schema.graphql
-
-# Generated types from schema introspection
-src/generated
