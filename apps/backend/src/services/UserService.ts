@@ -1,6 +1,6 @@
 import type { SignUpInput } from '@/resolvers/types/AuthTypes'
 import { comparePassword, hashPassword, signToken } from '@/utils/auth'
-import { PrismaClient } from 'csci32-database'
+import { PrismaClient, PermissionName, BASIC_ROLE_ID } from 'csci32-database'
 
 export interface UserServiceProps {
   prisma: PrismaClient
@@ -21,22 +21,44 @@ export class UserService {
     const { email, password, name } = params
 
     const existing = await this.prisma.user.findUnique({ where: { email } })
-
-    if (existing) {
-      throw new Error('Email already in use')
-    }
+    if (existing) { throw new Error('Email already in use') }
 
     const passwordHash = await hashPassword(password)
 
-    const user = await this.prisma.user.create({
-      data: { email, name: name ?? null, passwordHash },
-      select: { user_id: true, email: true, name: true },
+    const created = await this.prisma.user.create({
+      data: {
+        email,
+        name: name ?? null,
+        passwordHash,
+        role: { connect: { role_id: BASIC_ROLE_ID } },
+      },
+      select: {
+        user_id: true,
+        email: true,
+        name: true,
+        role: {
+          select: {
+            name: true,
+            role_permissions: {
+              select: { permission: { select: { name: true } } },
+            },
+          },
+        },
+      },
     })
 
+    const user = {
+      user_id: created.user_id,
+      email: created.email,
+      name: created.name,
+    }
+
     const token = signToken({
-      sub: user.user_id,
-      email: user.email,
-      name: user.name ?? undefined,
+      sub: created.user_id,
+      email: created.email,
+      name: created.name ?? undefined,
+      role: created.role?.name,
+      permissions: created.role?.role_permissions.map((p) => p.permission.name) ?? [],
     })
 
     return { user, token }
@@ -52,6 +74,7 @@ export class UserService {
         email: true,
         name: true,
         passwordHash: true,
+        role: { select: { name: true, role_permissions: { select: { permission: { select: { name: true } } } } } },
       },
     })
 
@@ -69,6 +92,8 @@ export class UserService {
       sub: found.user_id,
       email: found.email,
       name: found.name ?? undefined,
+      role: found.role?.name,
+      permissions: found.role?.role_permissions.map((p) => p.permission.name) ?? [],
     })
 
     const { passwordHash: _, ...user } = found

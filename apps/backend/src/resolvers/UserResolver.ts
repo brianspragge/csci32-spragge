@@ -1,8 +1,9 @@
 import 'reflect-metadata'
-import { Arg, Ctx, Field, ID , Mutation, ObjectType, Query, Resolver } from 'type-graphql'
+import { Arg, Authorized, Ctx, Field, ID, Mutation, ObjectType, Query, Resolver } from 'type-graphql'
 import type { Context } from '@/utils/graphql'
 import { AuthPayload, SignUpInput } from '@/resolvers/types/AuthTypes'
 import { SignInInput } from '@/resolvers/types/SignInTypes'
+import { PermissionName } from 'csci32-database'
 
 
 @ObjectType()
@@ -19,6 +20,7 @@ class User {
 
 @Resolver()
 export class UserResolver {
+  @Authorized(PermissionName.UserRead)
   @Query(() => [User])
   findManyUsers(@Ctx() { userService }: Context) {
     return userService.findMany()

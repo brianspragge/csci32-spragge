@@ -1,10 +1,11 @@
 import { UserResolver } from '@/resolvers/UserResolver'
 import { buildSchema } from 'type-graphql'
 import type { NonEmptyArray } from 'type-graphql'
-import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
+import type { FastifyBaseLogger, FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import { PrismaClient } from 'csci32-database'
 import { getBooleanEnvVar, getRequiredStringEnvVar } from '@/utils'
 import type { UserService } from '@/services/UserService'
+import { customAuthChecker } from '@/utils/authChecker'
 import mercurius from 'mercurius'
 import mercuriusLogging from 'mercurius-logging'
 
@@ -17,10 +18,11 @@ export interface Context {
   reply: FastifyReply
   userService: UserService
   prisma: PrismaClient
+  log: FastifyBaseLogger
 }
 
 export async function registerGraphQL(fastify: FastifyInstance) {
-  const schema = await buildSchema({ resolvers })
+  const schema = await buildSchema({ resolvers, authChecker: customAuthChecker })
   const graphiql = getBooleanEnvVar('ENABLE_GRAPHIQL', false)
 
   fastify.log.info(`GraphIQL is ${graphiql ? 'enabled' : 'disabled'}`)
@@ -36,6 +38,7 @@ export async function registerGraphQL(fastify: FastifyInstance) {
       reply,
       userService: fastify.userService,
       prisma: fastify.prisma,
+      log: fastify.log,
     }),
     allowBatchedQueries: false,
   })

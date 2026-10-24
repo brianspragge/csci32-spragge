@@ -1,6 +1,7 @@
-export * from '../prisma/seeders/seedRoles'
-export * from '../prisma/seeders/seedPermissions'
-export * from '../prisma/seeders/seedUsers'
+export { ADMIN_ROLE_ID, BASIC_ROLE_ID } from '../prisma/seeders/seedRoles'
+export { seedRoles } from '../prisma/seeders/seedRoles'
+export { seedPermissions } from '../prisma/seeders/seedPermissions'
+export { seedUsers } from '../prisma/seeders/seedUsers'
 
 import { PrismaClient } from '../generated/prisma/client'
 
