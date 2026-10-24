@@ -3,6 +3,7 @@ import { Arg, Authorized, Ctx, Field, ID, Mutation, ObjectType, Query, Resolver 
 import type { Context } from '@/utils/graphql'
 import { AuthPayload, SignUpInput } from '@/resolvers/types/AuthTypes'
 import { SignInInput } from '@/resolvers/types/SignInTypes'
+import { FindManyUsersInput } from '@/resolvers/types/FindManyUsersInput'
 import { PermissionName } from 'csci32-database'
 
 
@@ -20,10 +21,22 @@ class User {
 
 @Resolver()
 export class UserResolver {
-  @Authorized(PermissionName.UserRead)
+  @Authorized([PermissionName.UserRead])
   @Query(() => [User])
-  findManyUsers(@Ctx() { userService }: Context) {
-    return userService.findMany()
+  findManyUsers(
+    @Ctx() { userService }: Context,
+    @Arg('params', () => FindManyUsersInput, { nullable: true }) params?: FindManyUsersInput,
+  ) {
+    return userService.findMany(params ?? {})
+  }
+
+  @Authorized([PermissionName.UserRead])
+  @Query(() => Number)
+  totalUsers(
+    @Ctx() { userService }: Context,
+    @Arg('params', () => FindManyUsersInput, { nullable: true }) params?: FindManyUsersInput,
+  ) {
+    return userService.getTotalUsers(params?.filters ?? {})
   }
 
   @Mutation(() => AuthPayload)
