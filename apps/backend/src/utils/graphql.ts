@@ -1,4 +1,5 @@
 import { UserResolver } from '@/resolvers/UserResolver'
+import { RoleResolver } from '@/resolvers/RoleResolver'
 import { buildSchema } from 'type-graphql'
 import type { NonEmptyArray } from 'type-graphql'
 import type { FastifyBaseLogger, FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
@@ -11,7 +12,7 @@ import mercuriusLogging from 'mercurius-logging'
 
 const GRAPHQL_API_PATH = '/api/graphql'
 const GRAPHQL_DEPTH_LIMIT = 7
-const resolvers = [UserResolver] as NonEmptyArray<Function>
+const resolvers = [UserResolver, RoleResolver] as NonEmptyArray<Function>
 
 export interface Context {
   request: FastifyRequest
