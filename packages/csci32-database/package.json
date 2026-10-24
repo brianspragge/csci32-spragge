@@ -6,6 +6,12 @@
   "exports": {
     ".": "./src/client.ts"
   },
+  "scripts": {
+     "seed": "tsx prisma/seed.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "@types/node": "^26.5.1",
     "dotenv": "^17.4.2",
