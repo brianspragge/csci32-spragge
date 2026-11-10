@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -24,19 +25,20 @@ enum PermissionName {
 }
 
 model User {
-  user_id       String   @id @default(cuid())
+  user_id       String    @id @default(cuid())
   name          String?
-  email         String?  @unique
+  email         String?   @unique
   emailVerified DateTime?
   passwordHash  String?
   role_id       String?
-  role          Role?    @relation(fields: [role_id], references: [role_id])
+  role          Role?     @relation(fields: [role_id], references: [role_id])
+  posts         Post[]
 }
 
 model Role {
-  role_id     String       @id @default(cuid())
-  name        RoleName     @unique
-  users       User[]
+  role_id          String           @id @default(cuid())
+  name             RoleName         @unique
+  users            User[]
   role_permissions RolePermission[]
 }
 
@@ -47,12 +49,31 @@ model Permission {
 }
 
 model RolePermission {
-  role_id        String
-  permission_id  String
+  role_id       String
+  permission_id String
 
-  role        Role        @relation(fields: [role_id], references: [role_id])
-  permission  Permission  @relation(fields: [permission_id], references: [permission_id])
+  role       Role       @relation(fields: [role_id], references: [role_id])
+  permission Permission @relation(fields: [permission_id], references: [permission_id])
 
   @@id([role_id, permission_id]) // composite primary key
   @@unique([role_id, permission_id])
+}
+
+model Post {
+  id        String    @id @default(cuid())
+  title     String
+  body      String
+  authorId  String
+  author    User      @relation(fields: [authorId], references: [user_id])
+  comments  Comment[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  body      String
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 }
